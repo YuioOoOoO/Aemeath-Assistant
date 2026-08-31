@@ -1,0 +1,8 @@
+{
+    "mcp_servers": {
+    "ddg-search": {
+      "command": "python",
+      "args": ["-m", "src.open_llm_vtuber.mcpp.web_search_server"]
+      }
+    }
+}

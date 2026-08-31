@@ -1,0 +1,136 @@
+.listening-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 6;
+  width: 52px;
+  aspect-ratio: 110 / 96;
+  background: transparent !important;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(-9999px, -9999px, 0);
+  transform-origin: center;
+  transition: opacity 200ms ease, visibility 0s linear 200ms;
+  border: 0;
+  box-shadow: none;
+}
+
+.listening-indicator[data-visible="true"] {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 200ms ease, visibility 0s linear 0s;
+}
+
+.listening-indicator__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  background: transparent !important;
+  filter: none;
+}
+
+.listening-indicator__ear,
+.listening-indicator__wave,
+.listening-indicator__star {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-play-state: paused;
+}
+
+.listening-indicator[data-visible="true"][data-animated="true"]
+  .listening-indicator__ear {
+  animation: listening-ear-float 1.4s ease-in-out infinite;
+  animation-play-state: running;
+}
+
+.listening-indicator[data-visible="true"][data-animated="true"]
+  .listening-indicator__wave--near {
+  animation: listening-wave 1.55s cubic-bezier(0.25, 0.55, 0.35, 1) infinite;
+  animation-play-state: running;
+}
+
+.listening-indicator[data-visible="true"][data-animated="true"]
+  .listening-indicator__wave--far {
+  animation: listening-wave 1.55s 200ms cubic-bezier(0.25, 0.55, 0.35, 1) infinite;
+  animation-play-state: running;
+}
+
+.listening-indicator[data-visible="true"][data-animated="true"]
+  .listening-indicator__star {
+  animation: listening-star 2.2s ease-in-out infinite;
+  animation-play-state: running;
+}
+
+@keyframes listening-ear-float {
+  0%,
+  100% {
+    transform: translate3d(0, 1px, 0) scale(0.97);
+  }
+  50% {
+    transform: translate3d(0, -2px, 0) scale(1.035);
+  }
+}
+
+@keyframes listening-wave {
+  0% {
+    opacity: 0;
+    transform: translate3d(-1px, 0, 0) scale(0.88);
+  }
+  18% {
+    opacity: 0.95;
+  }
+  72% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(3px, 0, 0) scale(1.08);
+  }
+}
+
+@keyframes listening-star {
+  0%,
+  72%,
+  100% {
+    opacity: 0.72;
+    transform: rotate(-4deg) scale(0.9);
+  }
+  82% {
+    opacity: 1;
+    transform: rotate(12deg) scale(1.12);
+  }
+  90% {
+    opacity: 0.82;
+    transform: rotate(2deg) scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .listening-indicator {
+    transition-duration: 180ms;
+  }
+
+  .listening-indicator[data-visible="true"] .listening-indicator__ear {
+    animation: listening-ear-breathe 2.4s ease-in-out infinite;
+    animation-play-state: running;
+  }
+
+  .listening-indicator__wave,
+  .listening-indicator__star {
+    animation: none !important;
+    opacity: 0.78;
+  }
+}
+
+@keyframes listening-ear-breathe {
+  0%,
+  100% {
+    transform: scale(0.99);
+  }
+  50% {
+    transform: scale(1.01);
+  }
+}

@@ -1,0 +1,276 @@
+[
+    {
+        "name": "mao_pro",
+        "description": "",
+        "url": "/live2d-models/mao_pro/runtime/mao_pro.model3.json",
+        "kScale": 0.5,
+        "initialXshift": 0,
+        "initialYshift": 0,
+        "kXOffset": 1150,
+        "idleMotionGroupName": "Idle",
+        "emotionMap": {
+            "neutral": 0,
+            "anger": 2,
+            "disgust": 2,
+            "fear": 1,
+            "joy": 3,
+            "smirk": 3,
+            "sadness": 1,
+            "surprise": 3
+        },
+        "tapMotions": {
+            "HitAreaHead": {
+                "": 1
+            },
+            "HitAreaBody": {
+                "": 1
+            }
+        }
+    },
+    {
+        "name": "xiaoai",
+        "description": "爱弥斯桌宠 Live2D 模型",
+        "url": "/live2d-models/xiaoai/runtime/小爱弥斯.model3.json",
+        "kScale": 0.25,
+        "initialXshift": 0,
+        "initialYshift": 0,
+        "kXOffset": 1150,
+        "idleMotionGroupName": "Idle",
+        "emotionMap": {
+            "neutral": 4,
+            "anger": 5,
+            "disgust": 7,
+            "fear": 2,
+            "joy": 1,
+            "smirk": 10,
+            "sadness": 3,
+            "surprise": 0
+        },
+        "voiceEmotionMap": {
+            "neutral": {
+                "weak": { "expressions": [], "motions": [] },
+                "medium": {
+                    "expressions": [],
+                    "motions": [{ "group": "Tap脸\r", "index": 1 }]
+                },
+                "strong": {
+                    "expressions": [],
+                    "motions": [
+                        { "group": "Tap脸\r", "index": 1 },
+                        { "group": "Tap左侧发\r", "index": 2 }
+                    ]
+                }
+            },
+            "joy": {
+                "weak": {
+                    "expressions": [1],
+                    "motions": [
+                        { "group": "Tap脸\r", "index": 1 },
+                        { "group": "Tap脸\r", "index": 2 }
+                    ]
+                },
+                "medium": {
+                    "expressions": [1],
+                    "motions": [
+                        { "group": "Tap脸\r", "index": 2 },
+                        { "group": "Tap脸\r", "index": 3 },
+                        { "group": "Tap右手\r", "index": 1 }
+                    ]
+                },
+                "strong": {
+                    "expressions": [1],
+                    "motions": [
+                        { "group": "Tap右手\r", "index": 1 },
+                        { "group": "Tap左脚\r", "index": 0 },
+                        { "group": "Tap脸\r", "index": 4 }
+                    ]
+                }
+            },
+            "smirk": {
+                "weak": {
+                    "expressions": [11],
+                    "motions": [{ "group": "Tap左眼球\r", "index": 1 }]
+                },
+                "medium": {
+                    "expressions": [10, 11],
+                    "motions": [
+                        { "group": "Tap左眼球\r", "index": 1 },
+                        { "group": "Tap左侧发\r", "index": 0 }
+                    ]
+                },
+                "strong": {
+                    "expressions": [9, 10],
+                    "motions": [
+                        { "group": "Tap左侧发\r", "index": 0 },
+                        { "group": "Tap左侧发\r", "index": 2 }
+                    ]
+                }
+            },
+            "sadness": {
+                "weak": { "expressions": [2], "motions": [] },
+                "medium": {
+                    "expressions": [2],
+                    "motions": [{ "group": "Tap胸口链条", "index": 0 }]
+                },
+                "strong": {
+                    "expressions": [3],
+                    "motions": [{ "group": "Tap猫-取消", "index": 0 }]
+                }
+            },
+            "surprise": {
+                "weak": {
+                    "expressions": [],
+                    "motions": [{ "group": "Tap脸\r", "index": 1 }]
+                },
+                "medium": {
+                    "expressions": [],
+                    "motions": [{ "group": "Tap右眼球\r", "index": 1 }]
+                },
+                "strong": {
+                    "expressions": [],
+                    "motions": [
+                        { "group": "Tap右眼球\r", "index": 1 },
+                        { "group": "Tap左脚\r", "index": 0 }
+                    ]
+                }
+            },
+            "anger": {
+                "weak": {
+                    "expressions": [5],
+                    "motions": [{ "group": "Tap左侧发\r", "index": 2 }]
+                },
+                "medium": {
+                    "expressions": [5],
+                    "motions": [
+                        { "group": "Tap左侧发\r", "index": 2 },
+                        { "group": "Tap左侧发\r", "index": 0 }
+                    ]
+                },
+                "strong": {
+                    "expressions": [5, 8],
+                    "motions": [
+                        { "group": "Tap左手\r", "index": 1 },
+                        { "group": "Tap左侧发\r", "index": 0 }
+                    ]
+                }
+            },
+            "disgust": {
+                "weak": {
+                    "expressions": [7],
+                    "motions": [{ "group": "Tap左侧发\r", "index": 2 }]
+                },
+                "medium": {
+                    "expressions": [7],
+                    "motions": [
+                        { "group": "Tap左侧发\r", "index": 2 },
+                        { "group": "Tap左手\r", "index": 0 }
+                    ]
+                },
+                "strong": {
+                    "expressions": [7, 8],
+                    "motions": [
+                        { "group": "Tap左侧发\r", "index": 2 },
+                        { "group": "Tap左手\r", "index": 1 }
+                    ]
+                }
+            },
+            "fear": {
+                "weak": { "expressions": [2], "motions": [] },
+                "medium": {
+                    "expressions": [2],
+                    "motions": [
+                        { "group": "Tap胸口链条", "index": 0 },
+                        { "group": "Tap左手\r", "index": 0 }
+                    ]
+                },
+                "strong": {
+                    "expressions": [2, 6],
+                    "motions": [
+                        { "group": "Shake", "index": 0 },
+                        { "group": "Tap左脚\r", "index": 0 }
+                    ]
+                }
+            }
+        },
+        "tapMotions": {
+            "呆毛": {
+                "Tap呆毛": 1
+            },
+            "猫-取消": {
+                "Tap猫-取消": 1
+            },
+            "抱猫蹭-取消": {
+                "Tap抱猫蹭-取消": 1
+            },
+            "手柄\r": {
+                "Tap手柄\r": 1
+            },
+            "胸口链条": {
+                "Tap胸口链条": 1
+            },
+            "右头饰星星\r": {
+                "Tap右头饰星星\r": 1
+            },
+            "头饰金属L\r": {
+                "Tap头饰金属L\r": 1
+            },
+            "右手\r": {
+                "Tap右手\r": 1
+            },
+            "左海豹\r": {
+                "Tap左海豹\r": 1
+            },
+            "头饰左翅膀\r": {
+                "Tap头饰左翅膀\r": 1
+            },
+            "右海豹\r": {
+                "Tap右海豹\r": 1
+            },
+            "领子\r": {
+                "Tap领子\r": 1
+            },
+            "左眼球\r": {
+                "Tap左眼球\r": 1
+            },
+            "右眼球\r": {
+                "Tap右眼球\r": 1
+            },
+            "鼻子\r": {
+                "Tap鼻子\r": 1
+            },
+            "腮红\r": {
+                "Tap腮红\r": 1
+            },
+            "脸\r": {
+                "Tap脸\r": 1
+            },
+            "左猫耳\r": {
+                "Tap左猫耳\r": 1
+            },
+            "左侧发\r": {
+                "Tap左侧发\r": 1
+            },
+            "右猫耳\r": {
+                "Tap右猫耳\r": 1
+            },
+            "左手\r": {
+                "Tap左手\r": 1
+            },
+            "左脚\r": {
+                "Tap左脚\r": 1
+            },
+            "右脚\r": {
+                "Tap右脚\r": 1
+            },
+            "尾巴\r": {
+                "Tap尾巴\r": 1
+            },
+            "左翅膀\r": {
+                "Tap左翅膀\r": 1
+            },
+            "剑-取消": {
+                "Tap剑-取消": 1
+            }
+        }
+    }
+]

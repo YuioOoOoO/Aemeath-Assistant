@@ -1,0 +1,625 @@
+{
+  "Version": 1,
+  "ConfVer": 0,
+  "Type": 0,
+  "FileReferences": {
+    "Moc": "小爱弥斯.moc3",
+    "Textures": [
+      "小爱弥斯.4096/texture_00.png",
+      "小爱弥斯.4096/texture_01.png"
+    ],
+    "Physics": "小爱弥斯.physics3.json",
+    "PhysicsV2": {
+      "File": "小爱弥斯.physics3.json"
+    },
+    "Motions": {
+      "Idle": [
+        {
+          "File": "动画/长动画/待机.motion3.json",
+          "Priority": 2
+        }
+      ],
+      "Tick5": [
+        {
+          "File": "动画/长动画/发呆.motion3.json",
+          "WrapMode": 2,
+          "Priority": 5
+        },
+        {
+          "File": "动画/长动画/抱猫蹭.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/长动画/食指.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/长动画/困.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Shake": [
+        {
+          "File": "动画/其他/晕.motion3.json",
+          "WrapMode": 2,
+          "Priority": 5
+        }
+      ],
+      "Leave_100_10_30": [
+        {
+          "File": "动画/长动画/困.motion3.json",
+          "WrapMode": 2,
+          "Priority": 5
+        }
+      ],
+      "Tap猫-取消": [
+        {
+          "File": "动画/表情/哭.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap抱猫蹭-取消": [
+        {
+          "File": "动画/长动画/抱猫蹭 -取消.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap胸口链条": [
+        {
+          "Name": "抱抱",
+          "File": "动画/长动画/抱抱.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap右手\r": [
+        {
+          "File": "动画/长动画/纸飞机.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/长动画/剪刀手.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/其他/手柄.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap左手\r": [
+        {
+          "File": "动画/长动画/捂嘴笑.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/短动画/左手 拿剑.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap剑-取消": [
+        {
+          "File": "动画/短动画/左手 拿剑 取消.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap腮红\r": [
+        {
+          "File": "动画/短动画/戳脸.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/表情/脸红.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap脸\r": [
+        {
+          "File": "动画/短动画/戳右边头.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/表情/点头.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/表情/笑.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/表情/笑2.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/表情/笑3.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap左侧发\r": [
+        {
+          "File": "动画/长动画/食指.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/短动画/戳左边头.motion3.json",
+          "Priority": 5,
+          "Weight": 2
+        },
+        {
+          "File": "动画/表情/摇头.motion3.json",
+          "Priority": 5,
+          "Weight": 2
+        }
+      ],
+      "Tap领子\r": [
+        {
+          "File": "动画/长动画/抱猫蹭.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap左脚\r": [
+        {
+          "File": "动画/短动画/跳一下.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap右脚\r": [
+        {
+          "File": "动画/短动画/脚往右.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap左眼球\r": [
+        {
+          "File": "动画/短动画/戳左眼睛.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/表情/wink.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap右眼球\r": [
+        {
+          "File": "动画/短动画/戳右眼睛.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/表情/惊讶.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap左海豹\r": [
+        {
+          "File": "动画/短动画/戳左边海豹.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap右海豹\r": [
+        {
+          "File": "动画/短动画/戳右边海豹.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap手柄\r": [
+        {
+          "File": "动画/其他/手柄消失.motion3.json",
+          "Priority": 6
+        }
+      ],
+      "Tap头饰金属L\r": [
+        {
+          "File": "动画/其他/猫耳.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap尾巴\r": [
+        {
+          "File": "动画/其他/猫耳消失.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap左猫耳\r": [
+        {
+          "File": "动画/短动画/戳左猫耳.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap右猫耳\r": [
+        {
+          "File": "动画/短动画/戳右猫耳.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap呆毛": [
+        {
+          "File": "动画/短动画/呆毛.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap鼻子\r": [
+        {
+          "File": "动画/表情/可怜.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/表情/横眼嘟嘴.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/表情/黑化.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap头饰左翅膀\r": [
+        {
+          "File": "动画/其他/翅膀.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Tap左翅膀\r": [
+        {
+          "File": "动画/其他/翅膀消失.motion3.json",
+          "Priority": 5
+        }
+      ],
+      "Start": [
+        {
+          "File": "动画/其他/翅膀入场.motion3.json"
+        },
+        {
+          "File": "动画/短动画/跳一下.motion3.json"
+        }
+      ],
+      "Tap右头饰星星\r": [
+        {
+          "File": "动画/表情/呆.motion3.json",
+          "Priority": 5
+        },
+        {
+          "File": "动画/表情/笑.motion3.json",
+          "Priority": 5
+        }
+      ]
+    },
+    "Expressions": [
+      {
+        "Name": "豆豆眼",
+        "File": "表情配置/表情-豆豆眼.exp3.json"
+      },
+      {
+        "Name": "》《",
+        "File": "表情配置/表情-》《.exp3.json"
+      },
+      {
+        "Name": "可怜",
+        "File": "表情配置/表情-可怜.exp3.json"
+      },
+      {
+        "Name": "哭",
+        "File": "表情配置/表情-哭.exp3.json"
+      },
+      {
+        "Name": "呆",
+        "File": "表情配置/表情-呆.exp3.json"
+      },
+      {
+        "Name": "生气",
+        "File": "表情配置/表情-生气.exp3.json"
+      },
+      {
+        "Name": "晕",
+        "File": "表情配置/表情-晕.exp3.json"
+      },
+      {
+        "Name": "横眼",
+        "File": "表情配置/表情-横眼.exp3.json"
+      },
+      {
+        "Name": "黑化",
+        "File": "表情配置/表情-黑化.exp3.json"
+      },
+      {
+        "Name": "吐舌",
+        "File": "表情配置/嘴-吐舌.exp3.json"
+      },
+      {
+        "Name": "呲牙",
+        "File": "表情配置/嘴-呲牙.exp3.json"
+      },
+      {
+        "Name": "咬嘴",
+        "File": "表情配置/嘴-咬嘴.exp3.json"
+      },
+      {
+        "Name": "嘟嘴",
+        "File": "表情配置/嘴-嘟嘴.exp3.json"
+      },
+      {
+        "Name": "手-飞机",
+        "File": "表情配置/手-纸飞机.exp3.json"
+      },
+      {
+        "Name": "手-食指",
+        "File": "表情配置/手-食指.exp3.json"
+      },
+      {
+        "Name": "手-比耶",
+        "File": "表情配置/手-剪刀手.exp3.json"
+      },
+      {
+        "Name": "手-抱抱",
+        "File": "表情配置/手-抱抱.exp3.json"
+      },
+      {
+        "Name": "手-抱猫",
+        "File": "表情配置/手-抱猫.exp3.json"
+      },
+      {
+        "Name": "手-捂嘴",
+        "File": "表情配置/手-捂嘴.exp3.json"
+      }
+    ],
+    "DisplayInfo": "小爱弥斯.cdi3.json"
+  },
+  "Controllers": {
+    "ParamHit": {
+      "Items": [
+        {
+          "Name": "摸头-花花",
+          "Id": "Param213",
+          "HitArea": "刘海R",
+          "Axis": 0,
+          "Factor": 0.005,
+          "ReleaseType": 1,
+          "Type": 1
+        },
+        {
+          "Name": "摸头-身体Y",
+          "Id": "ParamBodyAngleY",
+          "HitArea": "刘海R",
+          "Axis": 0,
+          "MinValue": -2.0,
+          "MaxValue": 2.0,
+          "Factor": -0.005,
+          "ReleaseType": 1,
+          "Type": 1
+        },
+        {
+          "Name": "摸头-头Y",
+          "Id": "ParamAngleY",
+          "HitArea": "刘海R",
+          "Axis": 0,
+          "Factor": -0.005,
+          "ReleaseType": 1,
+          "Type": 1
+        },
+        {
+          "Name": "摸头 L眼睛",
+          "Id": "ParamEyeROpen",
+          "HitArea": "刘海R",
+          "Axis": 0,
+          "Factor": -0.001,
+          "ReleaseType": 1,
+          "Type": 1
+        },
+        {
+          "Name": "摸头 L眼睛笑",
+          "Id": "ParamEyeRSmile",
+          "HitArea": "刘海R",
+          "Axis": 0,
+          "Factor": 0.0003,
+          "ReleaseType": 1,
+          "Type": 1
+        },
+        {
+          "Name": "摸头 R眼睛",
+          "Id": "ParamEyeLOpen",
+          "HitArea": "刘海R",
+          "Axis": 0,
+          "Factor": -0.001,
+          "ReleaseType": 1,
+          "Type": 1
+        },
+        {
+          "Name": "摸头 R眼睛笑",
+          "Id": "ParamEyeLSmile",
+          "HitArea": "刘海R",
+          "Axis": 0,
+          "Factor": 0.0003,
+          "ReleaseType": 1,
+          "Type": 1
+        },
+        {
+          "Name": "摸头-眉毛",
+          "Id": "ParamBrowLForm",
+          "HitArea": "刘海R",
+          "Axis": 0,
+          "MinValue": -0.35,
+          "Factor": -0.0001,
+          "ReleaseType": 1,
+          "Type": 1,
+          "Enabled": false
+        },
+        {
+          "Name": "摸头-嘴",
+          "Id": "ParamMouthForm",
+          "HitArea": "刘海R",
+          "Axis": 0,
+          "Factor": 0.0001,
+          "ReleaseType": 1,
+          "Type": 1
+        }
+      ],
+      "Enabled": true
+    },
+    "ParamLoop": {},
+    "KeyTrigger": {},
+    "ParamTrigger": {},
+    "AreaTrigger": {},
+    "HandTrigger": {},
+    "EyeBlink": {
+      "MinInterval": 500,
+      "MaxInterval": 6000,
+      "Items": [
+        {
+          "Id": "ParamEyeROpen",
+          "Min": 0.0,
+          "Max": 1.0,
+          "BlendMode": 2,
+          "Input": 0
+        },
+        {
+          "Id": "ParamEyeLOpen",
+          "Min": 0.0,
+          "Max": 1.0,
+          "BlendMode": 2,
+          "Input": 0
+        }
+      ],
+      "Enabled": true
+    },
+    "LipSync": {
+      "Gain": 5.0
+    },
+    "MouseTracking": {
+      "SmoothTime": 0.15,
+      "Enabled": true
+    },
+    "AutoBreath": {
+      "Enabled": true
+    },
+    "ExtraMotion": {
+      "Enabled": true
+    },
+    "Accelerometer": {
+      "Enabled": true
+    },
+    "Microphone": {},
+    "Transform": {},
+    "FaceTracking": {
+      "Enabled": true
+    },
+    "HandTracking": {},
+    "ParamValue": {},
+    "PartOpacity": {},
+    "ArtmeshOpacity": {},
+    "ArtmeshColor": {},
+    "ArtmeshCulling": {
+      "DefaultMode": 0
+    },
+    "IntimacySystem": {},
+    "Battery": {}
+  },
+  "HitAreas": [
+    {
+      "Name": "呆毛",
+      "Id": "ArtMesh71"
+    },
+    {
+      "Name": "猫-取消",
+      "Id": "ArtMesh22"
+    },
+    {
+      "Name": "抱猫蹭-取消",
+      "Id": "ArtMesh24"
+    },
+    {
+      "Name": "手柄\r",
+      "Id": "ArtMesh13"
+    },
+    {
+      "Name": "胸口链条",
+      "Id": "ArtMesh145"
+    },
+    {
+      "Name": "右头饰星星\r",
+      "Id": "ArtMesh65"
+    },
+    {
+      "Name": "头饰金属L\r",
+      "Id": "ArtMesh167"
+    },
+    {
+      "Name": "右手\r",
+      "Id": "ArtMesh161"
+    },
+    {
+      "Name": "左海豹\r",
+      "Id": "ArtMesh57"
+    },
+    {
+      "Name": "头饰左翅膀\r",
+      "Id": "ArtMesh68"
+    },
+    {
+      "Name": "右海豹\r",
+      "Id": "ArtMesh60"
+    },
+    {
+      "Name": "领子\r",
+      "Id": "ArtMesh144"
+    },
+    {
+      "Name": "左眼球\r",
+      "Id": "ArtMesh209"
+    },
+    {
+      "Name": "右眼球\r",
+      "Id": "ArtMesh133"
+    },
+    {
+      "Name": "鼻子\r",
+      "Id": "ArtMesh95"
+    },
+    {
+      "Name": "腮红\r",
+      "Id": "ArtMesh137"
+    },
+    {
+      "Name": "脸\r",
+      "Id": "ArtMesh138"
+    },
+    {
+      "Name": "左猫耳\r",
+      "Id": "ArtMesh226"
+    },
+    {
+      "Name": "刘海R",
+      "Id": "ArtMesh88"
+    },
+    {
+      "Name": "左侧发\r",
+      "Id": "ArtMesh74"
+    },
+    {
+      "Name": "右猫耳\r",
+      "Id": "ArtMesh52"
+    },
+    {
+      "Name": "左手\r",
+      "Id": "ArtMesh219"
+    },
+    {
+      "Name": "左脚\r",
+      "Id": "ArtMesh163"
+    },
+    {
+      "Name": "右脚\r",
+      "Id": "ArtMesh164"
+    },
+    {
+      "Name": "尾巴\r",
+      "Id": "ArtMesh231"
+    },
+    {
+      "Name": "左翅膀\r",
+      "Id": "ArtMesh64"
+    },
+    {
+      "Name": "剑-取消",
+      "Id": "ArtMesh62"
+    }
+  ],
+  "Options": {
+    "TexType": 0
+  }
+}
