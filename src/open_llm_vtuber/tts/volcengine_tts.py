@@ -36,6 +36,7 @@ class TTSEngine(TTSInterface):
         emotion_enabled: bool = True,
         emotion_scale: float = 3.0,
         emotion_map: dict[str, str] | None = None,
+        speech_instruction_map: dict[str, dict[str, str]] | None = None,
         timeout_seconds: float = 30.0,
     ) -> None:
         self.api_key = api_key
@@ -48,6 +49,7 @@ class TTSEngine(TTSInterface):
         self.emotion_enabled = emotion_enabled
         self.emotion_scale = emotion_scale
         self.emotion_map = emotion_map or {}
+        self.speech_instruction_map = speech_instruction_map or {}
         self.timeout_seconds = timeout_seconds
         self._validate_config()
 
@@ -86,6 +88,9 @@ class TTSEngine(TTSInterface):
         emotion = (
             self.emotion_map.get(emotion_key, emotion_key) if emotion_key else None
         )
+        speech_instruction = self._resolve_speech_instruction(
+            emotion_key, emotion_intensity
+        )
         # Treat the configured scale as an emotion-strength multiplier while
         # preserving the relative 1-5 intensity selected for each sentence.
         # A scale of 3.0 is neutral (1:1); higher values make emotional speech
@@ -101,7 +106,22 @@ class TTSEngine(TTSInterface):
             file_name_no_ext=file_name_no_ext,
             emotion=emotion,
             emotion_scale=adjusted_intensity,
+            speech_instruction=speech_instruction,
         )
+
+    def _resolve_speech_instruction(
+        self, emotion_key: str | None, emotion_intensity: int | None
+    ) -> str | None:
+        """Resolve a Live2D emotion and intensity to a Seed-TTS instruction."""
+        if not self.emotion_enabled:
+            return None
+        tiers = self.speech_instruction_map.get(emotion_key or "neutral", {})
+        if not tiers:
+            return None
+        intensity = max(1, min(5, emotion_intensity or 3))
+        tier = "weak" if intensity <= 2 else "medium" if intensity == 3 else "strong"
+        instruction = tiers.get(tier) or tiers.get("medium")
+        return instruction.strip() if instruction and instruction.strip() else None
 
     async def async_generate_audio(
         self,
@@ -109,6 +129,7 @@ class TTSEngine(TTSInterface):
         file_name_no_ext=None,
         emotion: str | None = None,
         emotion_scale: float | None = None,
+        speech_instruction: str | None = None,
     ) -> str:
         cache_file = self.generate_cache_file_name(
             file_name_no_ext, file_extension="mp3"
@@ -119,12 +140,26 @@ class TTSEngine(TTSInterface):
             "X-Api-Resource-Id": self.resource_id,
             "X-Api-Request-Id": request_id,
         }
-        request = self._build_request(text, emotion, emotion_scale)
+        request = self._build_request(
+            text, emotion, emotion_scale, speech_instruction=speech_instruction
+        )
 
         try:
             return await self._stream_audio(request, headers, cache_file)
         except VolcengineProtocolError:
             self._remove_partial_file(cache_file)
+            if speech_instruction:
+                logger.warning(
+                    "Volcengine rejected speech instruction; retrying with "
+                    "native emotion control."
+                )
+                return await self.async_generate_audio(
+                    text=text,
+                    file_name_no_ext=file_name_no_ext,
+                    emotion=emotion,
+                    emotion_scale=emotion_scale,
+                    speech_instruction=None,
+                )
             if emotion:
                 logger.warning(
                     "Volcengine rejected emotional synthesis for '{}'; "
@@ -136,6 +171,7 @@ class TTSEngine(TTSInterface):
                     file_name_no_ext=file_name_no_ext,
                     emotion=None,
                     emotion_scale=None,
+                    speech_instruction=speech_instruction,
                 )
             logger.exception("Volcengine TTS generation failed")
             raise
@@ -153,9 +189,13 @@ class TTSEngine(TTSInterface):
         text: str,
         emotion: str | None = None,
         emotion_scale: float | None = None,
+        speech_instruction: str | None = None,
     ) -> dict[str, Any]:
+        synthesis_text = (
+            f"[#{speech_instruction}]{text}" if speech_instruction else text
+        )
         req_params: dict[str, Any] = {
-            "text": text,
+            "text": synthesis_text,
             "speaker": self.speaker,
             "audio_params": {
                 "format": "mp3",
@@ -164,7 +204,14 @@ class TTSEngine(TTSInterface):
                 "loudness_rate": self.loudness_rate,
             },
         }
-        if self.emotion_enabled and emotion and emotion != "neutral":
+        # Natural-language instructions are authoritative when configured.
+        # Native emotion fields remain a fallback for unmapped emotions.
+        if (
+            self.emotion_enabled
+            and not speech_instruction
+            and emotion
+            and emotion != "neutral"
+        ):
             req_params.update(
                 {
                     "enable_emotion": True,

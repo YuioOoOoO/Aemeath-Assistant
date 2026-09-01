@@ -160,6 +160,52 @@ class EdgeTTSConfig(I18nMixin):
     }
 
 
+def _default_volcengine_speech_instruction_map() -> Dict[str, Dict[str, str]]:
+    """Default Seed-TTS performance instructions for the bundled character."""
+    return {
+        "neutral": {
+            "weak": "用自然平静、柔和放松的少女语气说",
+            "medium": "用自然轻快、温柔亲近、带着少女般活力但不过分夸张的语气说",
+            "strong": "用温暖明亮、亲切活泼、带着明显陪伴感的少女语气说",
+        },
+        "joy": {
+            "weak": "用轻快自然、带着浅浅笑意的少女语气说",
+            "medium": "用开心明亮、充满活力和明显笑意的少女语气说",
+            "strong": "用非常兴奋、欢快雀跃、几乎藏不住喜悦的少女语气说",
+        },
+        "smirk": {
+            "weak": "用轻松俏皮、带着一点小得意的语气说",
+            "medium": "用调皮自信、带着促狭笑意和轻微调侃的语气说",
+            "strong": "用非常得意、古灵精怪、带着明显坏笑和戏谑感的语气说",
+        },
+        "sadness": {
+            "weak": "用轻柔低落、带着淡淡失落的语气说",
+            "medium": "用低沉悲伤、声音稍显无力、带着明显不舍的语气说",
+            "strong": "用颤抖哽咽、极度难过又努力克制哭腔的语气说",
+        },
+        "surprise": {
+            "weak": "用略感意外、语调轻微上扬的语气说",
+            "medium": "用明显惊讶、语调上扬、反应有些措手不及的语气说",
+            "strong": "用极度震惊、难以置信、声音明显提高的语气说",
+        },
+        "anger": {
+            "weak": "用稍显不满、语气变得认真而克制的方式说",
+            "medium": "用生气严肃、语气坚定、带着明显责备的方式说",
+            "strong": "用非常愤怒、强硬激动、带着压迫感但吐字清晰的语气说",
+        },
+        "disgust": {
+            "weak": "用略带嫌弃、稍显疏远和不耐烦的语气说",
+            "medium": "用明显厌恶、冷淡排斥、带着嫌弃的语气说",
+            "strong": "用极度反感、冷厉排斥、毫不掩饰厌恶的语气说",
+        },
+        "fear": {
+            "weak": "用略显紧张、小心翼翼、声音稍微放轻的语气说",
+            "medium": "用害怕不安、声音轻微发颤、带着警惕的语气说",
+            "strong": "用极度恐惧、呼吸慌乱、声音明显颤抖的语气说",
+        },
+    }
+
+
 class VolcengineTTSConfig(I18nMixin):
     """Configuration for Volcengine Seed-TTS V3."""
 
@@ -178,6 +224,10 @@ class VolcengineTTSConfig(I18nMixin):
     emotion_enabled: bool = Field(True, alias="emotion_enabled")
     emotion_scale: float = Field(3.0, ge=1.0, le=5.0, alias="emotion_scale")
     emotion_map: Dict[str, str] = Field(default_factory=dict, alias="emotion_map")
+    speech_instruction_map: Dict[str, Dict[str, str]] = Field(
+        default_factory=_default_volcengine_speech_instruction_map,
+        alias="speech_instruction_map",
+    )
     timeout_seconds: float = Field(30.0, ge=1.0, le=120.0, alias="timeout_seconds")
 
     DESCRIPTIONS: ClassVar[Dict[str, Description]] = {

@@ -1,10 +1,14 @@
 {
-  "name": "open-llm-vtuber",
-  "version": "1.2.1",
-  "description": "An Electron application with React and TypeScript",
+  "name": "aemeath-assistant",
+  "version": "1.0.0",
+  "description": "爱弥斯桌面助手",
   "main": "./out/main/index.js",
-  "author": "example.com",
-  "homepage": "https://electron-vite.org",
+  "author": "RosettaYui",
+  "homepage": "https://github.com/RosettaYui/Aemeath-Assistant",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RosettaYui/Aemeath-Assistant.git"
+  },
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
@@ -18,7 +22,7 @@
     "prepare:backend": "node scripts/prepare-backend.mjs",
     "postinstall": "electron-builder install-app-deps",
     "build:unpack": "npm run build && electron-builder --dir",
-    "build:win": "npm run prepare:backend && npm run build && electron-builder --win --dir && npm run set:win-icon && electron-builder --win nsis --prepackaged release/1.2.1/win-unpacked",
+    "build:win": "npm run prepare:backend && npm run build && electron-builder --win --dir && npm run set:win-icon && electron-builder --win nsis --prepackaged release/1.0.0/win-unpacked",
     "set:win-icon": "node scripts/set-windows-icon.mjs",
     "build:mac": "electron-vite build && electron-builder --mac",
     "build:linux": "electron-vite build && electron-builder --linux",

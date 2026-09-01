@@ -20,12 +20,10 @@ import { useLocalStorage } from '@/hooks/utils/use-local-storage';
 
 import { settingStyles } from './setting-styles';
 import General from './general';
-import Live2D from './live2d';
 import ASR from './asr';
-import TTS from './tts';
-import Agent from './agent';
-import About from './about';
+import About from './project-about';
 import Models from './models';
+import Character from './character';
 
 interface SettingUIProps {
   open: boolean;
@@ -38,6 +36,11 @@ function SettingUI({ open, onClose }: SettingUIProps): JSX.Element {
   const [saveHandlers, setSaveHandlers] = useState<(() => void)[]>([]);
   const [cancelHandlers, setCancelHandlers] = useState<(() => void)[]>([]);
   const [activeTab, setActiveTab] = useLocalStorage('settingsActiveTab', 'general');
+  const migratedActiveTab = activeTab === 'live2d' || activeTab === 'agent'
+    ? 'character'
+    : activeTab === 'tts'
+      ? 'models'
+      : activeTab;
 
   const handleSaveCallback = useCallback((handler: () => void) => {
     setSaveHandlers((prev) => [...prev, handler]);
@@ -72,26 +75,14 @@ function SettingUI({ open, onClose }: SettingUIProps): JSX.Element {
             onCancel={handleCancelCallback}
           />
         </Tabs.Content>
-        <Tabs.Content value="live2d" {...settingStyles.settingUI.tabs.content}>
-          <Live2D
+        <Tabs.Content value="character" {...settingStyles.settingUI.tabs.content}>
+          <Character
             onSave={handleSaveCallback}
             onCancel={handleCancelCallback}
           />
         </Tabs.Content>
         <Tabs.Content value="asr" {...settingStyles.settingUI.tabs.content}>
           <ASR onSave={handleSaveCallback} onCancel={handleCancelCallback} />
-        </Tabs.Content>
-        <Tabs.Content value="tts" {...settingStyles.settingUI.tabs.content}>
-          <TTS
-            onSave={handleSaveCallback}
-            onCancel={handleCancelCallback}
-          />
-        </Tabs.Content>
-        <Tabs.Content value="agent" {...settingStyles.settingUI.tabs.content}>
-          <Agent
-            onSave={handleSaveCallback}
-            onCancel={handleCancelCallback}
-          />
         </Tabs.Content>
         <Tabs.Content value="models" {...settingStyles.settingUI.tabs.content}>
           <Models onSave={handleSaveCallback} onCancel={handleCancelCallback} />
@@ -126,7 +117,7 @@ function SettingUI({ open, onClose }: SettingUIProps): JSX.Element {
         <DrawerBody {...settingStyles.settingUI.drawerBody}>
           <Tabs.Root
             defaultValue="general"
-            value={activeTab}
+            value={migratedActiveTab}
             onValueChange={(details) => setActiveTab(details.value)}
             {...settingStyles.settingUI.tabs.root}
           >
@@ -138,28 +129,16 @@ function SettingUI({ open, onClose }: SettingUIProps): JSX.Element {
                 {t('settings.tabs.general')}
               </Tabs.Trigger>
               <Tabs.Trigger
-                value="live2d"
+                value="character"
                 {...settingStyles.settingUI.tabs.trigger}
               >
-                {t('settings.tabs.live2d')}
+                角色
               </Tabs.Trigger>
               <Tabs.Trigger
                 value="asr"
                 {...settingStyles.settingUI.tabs.trigger}
               >
                 {t('settings.tabs.asr')}
-              </Tabs.Trigger>
-              <Tabs.Trigger
-                value="tts"
-                {...settingStyles.settingUI.tabs.trigger}
-              >
-                {t('settings.tabs.tts')}
-              </Tabs.Trigger>
-              <Tabs.Trigger
-                value="agent"
-                {...settingStyles.settingUI.tabs.trigger}
-              >
-                {t('settings.tabs.agent')}
               </Tabs.Trigger>
               <Tabs.Trigger value="models" {...settingStyles.settingUI.tabs.trigger}>
                 模型

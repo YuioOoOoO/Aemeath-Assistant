@@ -1,7 +1,7 @@
 import { Box, Stack, Text, createListCollection } from '@chakra-ui/react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { wsService, MessageEvent } from '@/services/websocket-service';
-import { InputField, NumberField, SelectField } from './common';
+import { InputField, NumberField, SelectField, SwitchField } from './common';
 import { settingStyles } from './setting-styles';
 
 interface Props {
@@ -29,12 +29,13 @@ const labels: Record<string, string> = {
 
 const llmFields = ['base_url', 'model', 'temperature'];
 const ttsFields: Record<string, string[]> = {
-  volcengine_tts: ['resource_id', 'speaker', 'endpoint', 'sample_rate', 'speech_rate', 'loudness_rate', 'emotion_scale', 'timeout_seconds'],
+  volcengine_tts: ['resource_id', 'speaker', 'endpoint', 'sample_rate', 'speech_rate', 'loudness_rate', 'emotion_enabled', 'emotion_scale', 'timeout_seconds'],
   openai_tts: ['base_url', 'model', 'voice', 'file_extension'],
   siliconflow_tts: ['api_url', 'default_model', 'default_voice', 'sample_rate', 'speed', 'gain'],
   fish_api_tts: ['base_url', 'reference_id', 'latency'],
 };
 const fieldLabels: Record<string, string> = {
+  emotion_enabled: '情绪语音',
   base_url: 'API 地址', api_url: 'API 地址', model: '模型名称', default_model: '模型名称',
   temperature: '温度', api_key: 'API 密钥', resource_id: '资源 ID', speaker: '音色 ID',
   voice: '音色', default_voice: '音色', endpoint: '服务地址', sample_rate: '采样率',
@@ -89,6 +90,7 @@ function Models({ onSave, onCancel }: Props): JSX.Element {
   if (!settings) return <Text color="rgba(255,236,244,.7)">正在读取模型配置…</Text>;
   const renderField = (section: 'llm' | 'tts', key: string) => {
     const value = settings[section][key] ?? '';
+    if (typeof value === 'boolean') return <SwitchField key={key} label={fieldLabels[key] || key} checked={value} onChange={(v) => updateSection(section, key, v)} />;
     if (typeof value === 'number') return <NumberField key={key} label={fieldLabels[key] || key} value={value} onChange={(v) => updateSection(section, key, Number(v))} />;
     return <InputField key={key} label={fieldLabels[key] || key} value={String(value)} onChange={(v) => updateSection(section, key, v)} />;
   };

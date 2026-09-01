@@ -22,6 +22,14 @@ class VolcengineProtocolTests(unittest.TestCase):
             speaker="test-speaker",
             emotion_scale=3.5,
             emotion_map={"joy": "happy"},
+            speech_instruction_map={
+                "neutral": {"medium": "用自然轻快的语气说"},
+                "joy": {
+                    "weak": "轻轻开心地说",
+                    "medium": "开心地说",
+                    "strong": "非常开心地说",
+                },
+            },
         )
 
     def test_request_frame_contains_v3_header_and_json(self) -> None:
@@ -67,6 +75,32 @@ class VolcengineProtocolTests(unittest.TestCase):
 
         self.assertNotIn("emotion", params)
         self.assertNotIn("emotion_scale", params)
+
+    def test_instruction_is_prefixed_and_replaces_native_emotion_fields(self) -> None:
+        engine = self._engine()
+        instruction = engine._resolve_speech_instruction("joy", 5)
+        params = engine._build_request(
+            "你好", emotion="happy", emotion_scale=5, speech_instruction=instruction
+        )["req_params"]
+
+        self.assertEqual(params["text"], "[#非常开心地说]你好")
+        self.assertNotIn("enable_emotion", params)
+        self.assertNotIn("emotion", params)
+        self.assertNotIn("emotion_scale", params)
+
+    def test_instruction_strength_uses_existing_three_tiers(self) -> None:
+        engine = self._engine()
+
+        self.assertEqual(engine._resolve_speech_instruction("joy", 1), "轻轻开心地说")
+        self.assertEqual(engine._resolve_speech_instruction("joy", 3), "开心地说")
+        self.assertEqual(engine._resolve_speech_instruction("joy", 5), "非常开心地说")
+
+    def test_missing_emotion_uses_neutral_instruction(self) -> None:
+        engine = self._engine()
+
+        self.assertEqual(
+            engine._resolve_speech_instruction(None, None), "用自然轻快的语气说"
+        )
 
     def test_segment_intensity_overrides_default_and_is_clamped(self) -> None:
         engine = self._engine()

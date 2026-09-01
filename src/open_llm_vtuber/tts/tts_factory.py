@@ -40,6 +40,7 @@ class TTSFactory:
                 emotion_enabled=kwargs.get("emotion_enabled", True),
                 emotion_scale=kwargs.get("emotion_scale", 3.0),
                 emotion_map=kwargs.get("emotion_map", {}),
+                speech_instruction_map=kwargs.get("speech_instruction_map", {}),
                 timeout_seconds=kwargs.get("timeout_seconds", 30.0),
             )
         elif engine_type == "pyttsx3_tts":
